@@ -1,7 +1,7 @@
 import React, { useRef, useState, useEffect } from 'react';
 import ReactMarkdown from 'react-markdown';
 import { SolutionData } from '../types';
-import { Download, BookOpen, Star, Terminal, Copy, Check, Share2, Volume2, StopCircle } from 'lucide-react';
+import { Download, BookOpen, Star, Terminal, Copy, Check, Share2, Volume2, StopCircle, ThumbsUp, ThumbsDown } from 'lucide-react';
 import { generatePDF } from '../services/pdfService';
 import { generateSpeech } from '../services/geminiService';
 
@@ -63,6 +63,7 @@ const CodeBlock = ({ children, className }: any) => {
 
 const SolutionDisplay: React.FC<SolutionDisplayProps> = ({ data, originalQuestion }) => {
   const [shared, setShared] = useState(false);
+  const [feedback, setFeedback] = useState<'up' | 'down' | null>(null);
   const [isSpeaking, setIsSpeaking] = useState(false);
   const audioContextRef = useRef<AudioContext | null>(null);
   const sourceRef = useRef<AudioBufferSourceNode | null>(null);
@@ -152,6 +153,8 @@ const SolutionDisplay: React.FC<SolutionDisplayProps> = ({ data, originalQuestio
                 </button>
             </div>
         </div>
+        
+        {/* Content */}
         <div className="p-8 prose prose-slate max-w-none">
             <ReactMarkdown 
               components={{
@@ -165,6 +168,27 @@ const SolutionDisplay: React.FC<SolutionDisplayProps> = ({ data, originalQuestio
             >
               {data.solution}
             </ReactMarkdown>
+        </div>
+
+        {/* Feedback Footer */}
+        <div className="bg-gray-50/50 p-4 border-t border-gray-200 flex justify-end items-center gap-4">
+            <span className="text-sm text-gray-500 font-medium">Was this solution helpful?</span>
+            <div className="flex gap-2">
+                <button 
+                    onClick={() => setFeedback('up')}
+                    className={`p-2 rounded-lg transition-colors ${feedback === 'up' ? 'bg-green-100 text-green-600' : 'hover:bg-gray-100 text-gray-400'}`}
+                    aria-label="Thumbs up"
+                >
+                    <ThumbsUp size={18} />
+                </button>
+                <button 
+                    onClick={() => setFeedback('down')}
+                    className={`p-2 rounded-lg transition-colors ${feedback === 'down' ? 'bg-red-100 text-red-600' : 'hover:bg-gray-100 text-gray-400'}`}
+                    aria-label="Thumbs down"
+                >
+                    <ThumbsDown size={18} />
+                </button>
+            </div>
         </div>
       </div>
 
