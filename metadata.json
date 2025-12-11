@@ -1,0 +1,7 @@
+{
+  "name": "StudenFlow",
+  "description": "An anime-styled Computer Science study companion that solves questions and generates PDF study sheets.",
+  "requestFramePermissions": [
+    "microphone"
+  ]
+}

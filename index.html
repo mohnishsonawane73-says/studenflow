@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>StudenFlow - CS Study Sensei</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@300;400;500;600;700&family=Nunito:wght@300;400;600;700;800&display=swap" rel="stylesheet">
+    <script>
+      tailwind.config = {
+        theme: {
+          extend: {
+            fontFamily: {
+              anime: ['Fredoka', 'sans-serif'],
+              body: ['Nunito', 'sans-serif'],
+            },
+            colors: {
+              'anime-dark': '#1a1b2e',
+              'anime-card': '#24283b',
+              'anime-pink': '#ff79c6',
+              'anime-cyan': '#7aa2f7',
+              'anime-purple': '#bb9af7',
+              'anime-accent': '#9ece6a',
+            },
+            animation: {
+              'bounce-slow': 'bounce 3s infinite',
+              'pulse-fast': 'pulse 1.5s cubic-bezier(0.4, 0, 0.6, 1) infinite',
+              'spin-slow': 'spin 8s linear infinite',
+              'spin-reverse': 'spin 12s linear infinite reverse',
+              'fade-in-up': 'fadeInUp 0.5s ease-out forwards',
+            },
+            keyframes: {
+                fadeInUp: {
+                    '0%': { opacity: '0', transform: 'translateY(20px)' },
+                    '100%': { opacity: '1', transform: 'translateY(0)' },
+                }
+            }
+          }
+        }
+      }
+    </script>
+    <style>
+      body {
+        background-color: #0f111a;
+        color: #c0caf5;
+        font-family: 'Nunito', sans-serif;
+        -webkit-font-smoothing: antialiased;
+      }
+      
+      /* Premium Custom Scrollbar */
+      ::-webkit-scrollbar {
+        width: 8px;
+        height: 8px;
+      }
+      ::-webkit-scrollbar-track {
+        background: #13141f; 
+      }
+      ::-webkit-scrollbar-thumb {
+        background: #2f334d; 
+        border-radius: 4px;
+        border: 2px solid #13141f;
+      }
+      ::-webkit-scrollbar-thumb:hover {
+        background: #7aa2f7; 
+      }
+
+      .anime-border {
+        position: relative;
+        border: 1px solid rgba(122, 162, 247, 0.2);
+        box-shadow: 0 10px 30px -10px rgba(0,0,0,0.5);
+        transition: all 0.3s ease;
+      }
+      .anime-border:hover {
+        border-color: rgba(122, 162, 247, 0.5);
+        transform: translateY(-2px);
+      }
+      
+      .custom-scrollbar::-webkit-scrollbar {
+          height: 6px;
+      }
+    </style>
+  <script type="importmap">
+{
+  "imports": {
+    "jspdf": "https://esm.sh/jspdf@^3.0.4",
+    "lucide-react": "https://esm.sh/lucide-react@^0.560.0",
+    "react-dom/": "https://esm.sh/react-dom@^19.2.1/",
+    "@google/genai": "https://esm.sh/@google/genai@^1.33.0",
+    "react/": "https://esm.sh/react@^19.2.1/",
+    "react": "https://esm.sh/react@^19.2.1",
+    "react-markdown": "https://esm.sh/react-markdown@^10.1.0"
+  }
+}
+</script>
+</head>
+  <body>
+    <div id="root"></div>
+  </body>
+</html>
